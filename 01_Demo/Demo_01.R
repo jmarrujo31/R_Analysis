@@ -1,5 +1,6 @@
 demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)
 library(jsonlite)
+library(tidyverse)
 demo_table2 <- fromJSON(txt='demo.json')
 
 demo_table[3,"Year"]
@@ -92,3 +93,4 @@ plt + geom_boxplot() + theme(axis.text.x=element_text(angle=45,hjust=1)) #add bo
 plt <- ggplot(mpg_long,aes(x=manufacturer,y=Rating,color=MPG_Type)) #import dataset into ggplot2
 plt + geom_boxplot() + facet_wrap(vars(MPG_Type)) + #create multiple boxplots, one for each MPG type
    theme(axis.text.x=element_text(angle=90,hjust=1),legend.position = "none") + xlab("Manufacturer") #rotate x-axis labels
+
