@@ -153,3 +153,22 @@ cor(used_cars$Miles_Driven,used_cars$Selling_Price) #calculate correlation coeff
 
 used_matrix <- as.matrix(used_cars[,c("Selling_Price","Present_Price","Miles_Driven")]) #convert data frame into numeric matrix
 cor(used_matrix)
+
+?lm()
+#linear regression model
+lm(qsec ~ hp,mtcars) #create linear model
+summary(lm(qsec~hp,mtcars)) #summarize linear model
+model <- lm(qsec ~ hp,mtcars) #create linear model
+yvals <- model$coefficients['hp']*mtcars$hp +
+  model$coefficients['(Intercept)'] #determine y-axis values from linear model
+
+plt <- ggplot(mtcars,aes(x=hp,y=qsec)) #import dataset into ggplot2
+plt + geom_point() + geom_line(aes(y=yvals), color = "red") #plot scatter and linear model
+#15.7.3
+lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars) #generate multiple linear regression model
+summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary statistics
+#15.8.1
+?chisq.test()
+table(mpg$class,mpg$year) #generate contingency table
+tbl <- table(mpg$class,mpg$year) #generate contingency table
+chisq.test(tbl) #compare categorical distributions
