@@ -1,6 +1,6 @@
-demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)
 library(jsonlite)
 library(tidyverse)
+demo_table <- read.csv(file='demo.csv',check.names=F,stringsAsFactors = F)
 demo_table2 <- fromJSON(txt='demo.json')
 
 demo_table[3,"Year"]
@@ -172,3 +172,4 @@ summary(lm(qsec ~ mpg + disp + drat + wt + hp,data=mtcars)) #generate summary st
 table(mpg$class,mpg$year) #generate contingency table
 tbl <- table(mpg$class,mpg$year) #generate contingency table
 chisq.test(tbl) #compare categorical distributions
+
